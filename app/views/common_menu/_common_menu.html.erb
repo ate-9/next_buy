@@ -1,0 +1,32 @@
+<%# メニューのデザインはtailwindPlusのものを流用 https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/navbars %>
+<nav class="bg-gray-800">
+  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <%# モバイルのメニューボタン  %>
+      <%= render partial: "/common_menu/mobile/mobile_menu_button" %>
+
+      <%# メニューの中央部分 %>
+      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+        <%# ロゴ %>
+        <div class="flex shrink-0 items-center">
+          <img class="h-8 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
+        </div>
+
+        <%# メニューの項目 %>
+        <%= render partial: "/common_menu/pc/pc_menu_options" %>
+      </div>
+
+      <%# メニュー右側 %>
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <%# 通知ベル %>
+        <%= render partial: "common_menu/notification_button" %>
+
+        <%# プロフィール %>
+        <%= render partial: "/common_menu/profile" %>
+      </div>
+    </div>
+  </div>
+
+  <%# モバイルのメニューオプション  %>
+  <%= render partial: "/common_menu/mobile/mobile_menu_options" %>
+</nav>

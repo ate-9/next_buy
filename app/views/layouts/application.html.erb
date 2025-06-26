@@ -23,7 +23,9 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <%= render partial: '/common_menu/common_menu' %>
+
+    <main class="container mx-auto flex">
       <%= yield %>
     </main>
   </body>
