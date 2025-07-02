@@ -1,6 +1,6 @@
 ITEMS_SEEDS = [
 # TODO: itemsのseeds準備
-  # { id: 1, name: 'seed_item', price: 1234, list: 1, bought: false },
+  # { id: 1, name: 'seed_item', price: 1234, lists: 1, bought: false },
 ]
 
 ITEMS_SEEDS.each do |seed_item|
