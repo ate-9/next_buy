@@ -1,4 +1,4 @@
-<%= form_with(model: list, local: true, class: "contents") do |f| %>
+<%= form_with(model: list, class: "contents", data: { turbo: false }) do |f| %>
   <% if list.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
       <h2><%= pluralize(list.errors.count, "error") %> prohibited this list from being saved:</h2>
@@ -24,6 +24,14 @@
     <div class="flex items-center justify-center">
       <%= f.label :due_date, "期限: ", class: "text-xl pr-4" %>
       <%= f.date_field :due_date, class: "border border-blue-600 p-2" %>
+    </div>
+  </div>
+
+  <%# 作成者 TODO: 消す %>
+  <div class="flex justify-left my-4">
+    <div class="flex items-center justify-center">
+      <%= f.label :author_id, "作成者: ", class: "text-xl pr-4" %>
+      <%= f.collection_select :author_id, User.all, :id, :name, class: "border border-blue-600 p-2" %>
     </div>
   </div>
 
