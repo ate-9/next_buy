@@ -1,10 +1,9 @@
 <% content_for :title, "Editing lists" %>
 
-<div class="md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing list</h1>
+<div class="w-full flex flex-col justify-items-center items-center mt-[1em]">
+  <h1 class="font-bold text-4xl">
+    編集
+  </h1>
 
   <%= render "form", list: @list %>
-
-  <%= link_to "Show this lists", @list, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= link_to "Back to lists", lists_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
 </div>

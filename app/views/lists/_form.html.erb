@@ -1,84 +1,86 @@
-<%= form_with(model: list, class: "contents", data: { turbo: false }) do |f| %>
-  <% if list.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
-      <h2><%= pluralize(list.errors.count, "error") %> prohibited this list from being saved:</h2>
+<div class="flex flex-col justify-center items-start">
+  <%= form_with(model: list, class: "contents", data: { turbo: false }) do |f| %>
+    <% if list.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+        <h2><%= pluralize(list.errors.count, "error") %> prohibited this list from being saved:</h2>
 
-      <ul class="list-disc ml-6">
-        <% list.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul class="list-disc ml-6">
+          <% list.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%# リスト名 %>
+    <div class="flex justify-left my-2">
+      <div class="flex flex-col justify-start">
+        <%= f.label :list_name, "名前", class: "text-xl" %>
+        <%= f.text_field :list_name, class: "border border-blue-600 p-1" %>
+      </div>
     </div>
-  <% end %>
 
-  <%# リスト名 %>
-  <div class="flex justify-left my-4">
-    <div class="flex items-center justify-center">
-      <%= f.label :list_name, "名前: ", class: "text-xl pr-4" %>
-      <%= f.text_field :list_name, class: "border border-blue-600 p-2" %>
+    <%# 期限日 %>
+    <div class="flex justify-left my-2">
+      <div class="flex flex-col justify-start ">
+        <%= f.label :due_date, "期限", class: "text-xl" %>
+        <%= f.date_field :due_date, class: "border border-blue-600 p-1" %>
+      </div>
+    </div>
+
+    <%# 作成者 TODO: 消す %>
+    <div class="flex justify-left my-2">
+      <div class="flex flex-col justify-center">
+        <%= f.label :author_id, "作成者", class: "text-xl" %>
+        <%= f.collection_select :author_id, User.all, :id, :name, class: "border border-blue-600 p-1" %>
+      </div>
+    </div>
+
+    <%# 購入者 %>
+    <div class="flex justify-left my-2">
+      <div class="flex flex-col justify-center">
+        <%= f.label :buyer_id, "購入者", class: "text-xl" %>
+        <%= f.collection_select :buyer_id, User.all, :id, :name, class: "border border-blue-600 p-1" %>
+      </div>
+    </div>
+
+    <%# 購入店 %>
+    <div class="flex justify-left my-4">
+      <div class="flex flex-col justify-center">
+        <%= f.label :store, "購入店", class: "text-xl" %>
+        <%= f.text_field :store, class: "border border-blue-600 p-1" %>
+      </div>
+    </div>
+
+    <%# ポイントカード %>
+    <div class="flex justify-left my-4">
+      <div class="flex flex-col justify-center">
+        <%= f.label :point_card, "ポイントカード", class: "text-xl" %>
+        <%= f.text_field :point_card, class: "border border-blue-600 p-1" %>
+      </div>
+    </div>
+
+    <%# メモ %>
+    <div class="flex justify-left my-4">
+      <div class="flex flex-col justify-center">
+        <%= f.label :memo, "メモ", class: "text-xl" %>
+        <%= f.text_area :memo, class: "border border-blue-600 p-1" %>
+      </div>
+    </div>
+
+    <%# 下書き %>
+    <div class="flex justify-left my-8 w-full">
+      <div class="flex justify-between items-center px-4 border rounded-sm w-full">
+        <%= f.label :draft, "下書きで保存", class: "w-3/4 py-4 ms-2 text-sm font-medium" %>
+        <%= f.check_box :draft, class: "w-1/4 rounded-md" %>
+      </div>
     </div>
   </div>
 
-  <%# 期限日 %>
-  <div class="flex justify-left my-4">
-    <div class="flex items-center justify-center">
-      <%= f.label :due_date, "期限: ", class: "text-xl pr-4" %>
-      <%= f.date_field :due_date, class: "border border-blue-600 p-2" %>
+  <div class="w-full flex items-center justify-center pb-10">
+    <div class="mr-2">
+      <%= f.submit "+ 作成", class: "w-[5em] h-[3em] px-1 py-2 rounded-md bg-blue-600 hover:bg-blue-400 text-white flex justify-center items-center font-medium mr-2" %>
     </div>
-  </div>
-
-  <%# 作成者 TODO: 消す %>
-  <div class="flex justify-left my-4">
-    <div class="flex items-center justify-center">
-      <%= f.label :author_id, "作成者: ", class: "text-xl pr-4" %>
-      <%= f.collection_select :author_id, User.all, :id, :name, class: "border border-blue-600 p-2" %>
-    </div>
-  </div>
-
-  <%# 購入者 %>
-  <div class="flex justify-left my-4">
-    <div class="flex items-center justify-center">
-      <%= f.label :buyer_id, "購入者: ", class: "text-xl pr-4" %>
-      <%= f.collection_select :buyer_id, User.all, :id, :name, class: "border border-blue-600 p-2" %>
-    </div>
-  </div>
-
-  <%# 購入店 %>
-  <div class="flex justify-left my-4">
-    <div class="flex items-center justify-center">
-      <%= f.label :store, "購入店: ", class: "text-xl pr-4" %>
-      <%= f.text_field :store, class: "border border-blue-600 p-2" %>
-    </div>
-  </div>
-
-  <%# ポイントカード %>
-  <div class="flex justify-left my-4">
-    <div class="flex items-center justify-center">
-      <%= f.label :point_card, "ポイントカード: ", class: "text-xl pr-4" %>
-      <%= f.text_field :point_card, class: "border border-blue-600 p-2" %>
-    </div>
-  </div>
-
-  <%# メモ %>
-  <div class="flex justify-left my-4">
-    <div class="flex items-center justify-center">
-      <%= f.label :memo, "メモ: ", class: "text-xl pr-4" %>
-      <%= f.text_area :memo, class: "border border-blue-600 p-2" %>
-    </div>
-  </div>
-
-  <%# 下書き %>
-  <div class="flex justify-left my-4">
-    <div class="flex items-center justify-center">
-      <%= f.label :draft, "下書き: ", class: "text-xl pr-4" %>
-      <%= f.check_box :draft, class: "border border-blue-600 p-2" %>
-    </div>
-  </div>
-
-  <div class="w-1/2 flex items-center justify-center">
-    <div class="inline pr-2">
-      <%= f.submit "+ 作成", class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-400 text-white inline-block font-medium cursor-pointer" %>
-    </div>
-    <%= link_to "戻る", lists_path, class: "ml-2 rounded-md px-5.5 py-2.5 bg-gray-100 hover:bg-gray-200 border border-gray-300 inline-block font-medium" %>
+    <%= link_to "戻る", lists_path, class: "w-[5em] h-[3em] px-1 py-2 rounded-md bg-gray-100 hover:bg-gray-50 flex justify-center items-center font-medium mr-2" %>
   </div>
 <% end %>
