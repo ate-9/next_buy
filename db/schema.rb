@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_22_095116) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_08_074705) do
   create_table "items", force: :cascade do |t|
     t.string "name", null: false
     t.string "price"
@@ -37,15 +37,27 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_22_095116) do
     t.index ["buyer_id"], name: "index_lists_on_buyer_id"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.text "password", null: false
+    t.string "email_address", null: false
+    t.string "password_digest", null: false
     t.string "icon_color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
   add_foreign_key "items", "lists"
   add_foreign_key "lists", "users", column: "author_id"
   add_foreign_key "lists", "users", column: "buyer_id"
+  add_foreign_key "sessions", "users"
 end

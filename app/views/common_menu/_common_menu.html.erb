@@ -1,5 +1,5 @@
 <%# メニューのデザインはtailwindPlusのものを流用 https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/navbars %>
-<nav class="bg-gray-800 w-screen fixed top-0 h-[4em]">
+<nav class="bg-gray-800 w-screen sticky top-0 left-0 h-[4em] z-100">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <%# モバイルのメニューボタン  %>
@@ -9,7 +9,9 @@
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
         <%# ロゴ %>
         <div class="flex shrink-0 items-center">
-          <img class="h-8 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
+          <%= link_to root_path do %>
+            <img class="h-8 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
+          <% end %>
         </div>
 
         <%# メニューの項目 %>
@@ -23,6 +25,9 @@
 
         <%# プロフィール %>
         <%= render partial: "/common_menu/profile" %>
+
+        <%# ログイン、ログアウトボタン %>
+        <%= render partial: "/common_menu/pc/pc_login_button" %>
       </div>
     </div>
   </div>

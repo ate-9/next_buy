@@ -23,10 +23,12 @@
   </head>
 
   <body>
-    <main class="relative container w-screen lg:w-2/3 xl:w-3/5 2xl:w-2/5 mx-auto flex items-center justify-center mt-[4.5em] overflow-auto">
-      <%= yield %>
-    </main>
-
     <%= render partial: '/common_menu/common_menu' %>
+
+    <main class="relative container w-screen lg:w-2/3 xl:w-3/5 2xl:w-2/5 mx-auto flex items-center justify-start">
+      <div class="w-screen h-[calc(100vh-4em)] overflow-y-auto">
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>
