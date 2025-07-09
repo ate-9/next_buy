@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
+  resources :users, except: %i[ index ]
   # Defines the root path route ("/")
   root "lists#index"
   # アプリ

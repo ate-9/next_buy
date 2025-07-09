@@ -9,4 +9,4 @@ USERS_SEEDS.each do |seed_user|
     u.icon_color = seed_user[:icon_color]
   end
   puts "新規ユーザー name: #{seed_user[:name]} を作成しました"
-endt
+end

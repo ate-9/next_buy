@@ -1,0 +1,51 @@
+<% turbo_page_requires_reload %>
+
+<div class="w-1/2 mx-auto flex flex-col justify-center items-start">
+  <%= form_with model: @user, class: "w-full" do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul class="user-disc ml-6">
+          <% @user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%# ユーザー名 %>
+    <div class="flex justify-left my-2">
+      <div class="w-full flex flex-col justify-start">
+        <%= f.label :name, "名前", class: "text-xl" %>
+        <%= f.text_field :name, required: true, autofocus: true, placeholder: "ユーザー名", class: "border border-blue-600 p-1" %>
+      </div>
+    </div>
+
+    <%# メールアドレス %>
+    <div class="flex justify-left my-2">
+      <div class="w-full flex flex-col justify-start">
+        <%= f.label :email_address, "メールアドレス", class: "text-xl" %>
+        <%= f.text_field :email_address, required: true,  placeholder: "メールアドレス", class: "border border-blue-600 p-1" %>
+      </div>
+    </div>
+
+    <%# パスワード %>
+    <div class="flex justify-left my-2">
+      <div class="w-full flex flex-col justify-start">
+        <%= f.label :password, "パスワード", class: "text-xl" %>
+        <%= f.password_field :password, required: true, placeholder: "パスワード", class: "border border-blue-600 p-1 text-base" %>
+      </div>
+    </div>
+
+    <%# アイコンカラー %>
+    <div class="flex justify-left my-2">
+      <div class="w-full flex flex-col justify-start">
+        <%= f.label :icon_color, "アイコンカラー (※任意)", class: "text-xl" %>
+        <%= f.text_field :icon_color, placeholder: "#000000", class: "border border-blue-600 p-1" %>
+      </div>
+    </div>
+
+    <%= f.submit "+ 作成", class: "mt-[1em] w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  <% end %>
+</div>
