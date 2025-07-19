@@ -13,8 +13,9 @@
 ActiveRecord::Schema[8.0].define(version: 2025_07_08_074705) do
   create_table "items", force: :cascade do |t|
     t.string "name", null: false
-    t.string "price"
+    t.string "price", default: "-"
     t.boolean "bought", default: false, null: false
+    t.integer "amount", default: 1, null: false
     t.text "memo"
     t.integer "list_id", null: false
     t.datetime "created_at", null: false

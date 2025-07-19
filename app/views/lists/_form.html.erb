@@ -29,12 +29,12 @@
     </div>
 
     <%# 作成者 TODO: 消す %>
-    <div class="flex justify-left my-2">
-      <div class="flex flex-col justify-center">
-        <%= f.label :author_id, "作成者", class: "text-xl" %>
-        <%= f.collection_select :author_id, User.all, :id, :name, class: "border border-blue-600 p-1" %>
-      </div>
-    </div>
+<!--    <div class="flex justify-left my-2">-->
+<!--      <div class="flex flex-col justify-center">-->
+        <%#= f.label :author_id, "作成者", class: "text-xl" %>
+        <%#= f.collection_select :author_id, User.all, :id, :name, class: "border border-blue-600 p-1" %>
+<!--      </div>-->
+<!--    </div>-->
 
     <%# 購入者 %>
     <div class="flex justify-left my-2">
@@ -77,10 +77,13 @@
     </div>
   </div>
 
-  <div class="w-full flex items-center justify-center pb-10">
+  <%# その他登録するもの %>
+  <%= f.hidden_field :author_id, value: @current_user.id %>
+
+    <div class="w-full flex items-center justify-center pb-10">
     <div class="mr-2">
-      <%= f.submit "+ 作成", class: "w-[5em] h-[3em] px-1 py-2 rounded-md bg-blue-600 hover:bg-blue-400 text-white flex justify-center items-center font-medium mr-2" %>
+      <%= f.submit submit_text, class: "w-[5em] h-[3em] px-1 py-2 rounded-md bg-blue-600 hover:bg-blue-400 text-white flex justify-center items-center font-medium mr-2" %>
     </div>
-    <%= link_to "戻る", lists_path, class: "w-[5em] h-[3em] px-1 py-2 rounded-md bg-gray-100 hover:bg-gray-50 flex justify-center items-center font-medium mr-2" %>
+    <%= link_to "戻る", back_url, class: "w-[5em] h-[3em] px-1 py-2 rounded-md bg-gray-400/70 hover:bg-gray-400 flex justify-center items-center font-medium mr-2" %>
   </div>
 <% end %>

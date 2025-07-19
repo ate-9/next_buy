@@ -1,12 +1,14 @@
 class ListsController < ApplicationController
   before_action :set_list, only: %i[ show edit update destroy ]
-  before_action :set_items, only: %i[ index show edit update destroy ]
 
   def index
     @lists = List.all
+    @items = Item.all
   end
 
   def show
+    @list = List.find(params[:id])
+    @item = Item.new(list: @list)
   end
 
   def new
@@ -47,9 +49,5 @@ class ListsController < ApplicationController
   # Only allow a lists of trusted parameters through.
   def list_params
     params.require(:list).permit(:list_name, :due_date, :author_id, :buyer_id, :store, :point_card, :memo, :draft, :complete)
-  end
-
-  def set_items
-    @items = Item.all
   end
 end

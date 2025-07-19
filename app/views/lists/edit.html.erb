@@ -7,5 +7,5 @@
     編集
   </h1>
 
-  <%= render "form", list: @list %>
+  <%= render "form", list: @list, submit_text: "更新", back_url: list_path(@list) %>
 </div>

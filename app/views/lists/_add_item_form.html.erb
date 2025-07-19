@@ -1,0 +1,30 @@
+<%= form_with model: [@list, @item], class: "contents flex", local: true do |f| %>
+  <div class="w-full flex justify-center items-center my-[1em]">
+    <% if @item.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+        <h2><%= pluralize(list.errors.count, "error") %> prohibited this list from being saved:</h2>
+
+        <ul class="list-disc ml-6">
+          <% list.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%# アイテム %>
+    <div class="w-full flex justify-between items-center">
+      <%# 商品名 %>
+      <%= f.text_field :name, required: true, placeholder: "追加はこちら", class: "w-3/5 border border-blue-600 p-1" %>
+      <%# 個数 %>
+      <%= f.number_field :amount, required: true, value: "", placeholder: "1", class: "w-1/5 border border-blue-600 p-1" %>
+
+      <%# 追加ボタン %>
+      <div class="flex items-center justify-center ml-[0.5em]">
+        <div class="relative w-[2em] h-[2em] rounded-full bg-blue-600 hover:bg-blue-400 text-white flex justify-center items-center text-xl">
+          <%= f.submit "+", class: "absolute inset-0 w-full h-full rounded-full" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+<%# turbo_page_requires_reload %>
+
+<%# リストの設定一覧  %>
+<div class="w-9/10 p-2 border rounded-md bg-blue-100/80 flex flex-col align-center justify-center">
+  <h1 class="mt-[1em] mx-auto text-xl font-medium">リストの設定</h1>
+  <%# TODO: リストの設定を並べる(期限など)  %>
+  <%# if @list.items.present? %>
+<!--    <div class="w-9/10 mx-auto">-->
+<!--      <div class="flex flex-col justify-between items-center mx-auto text-xl">-->
+        <%# @list.items.each do |item| %>
+<!--          <div class="w-full h-[2.5em] flex justify-between items-center">-->
+<!--            <div class="w-3/5 truncate text-start"><%#= item.name %></div>-->
+<!--            <div class="w-1/5 text-center border-2 border-blue-700/50 rounded-xl"><%#= item.amount %></div>-->
+            <%# アイテム削除ボタン %>
+            <%#= button_to "-", list_item_path(@list, item), method: :delete, remote: true, data: { confirm: "削除しますか？" }, class: "relative w-[2em] h-[2em] rounded-full bg-red-600 hover:bg-red-400 text-white flex justify-center items-center text-xl" %>
+<!--          </div>-->
+        <%# end %>
+<!--      </div>-->
+<!--    </div>-->
+  <%# end %>
+
+  <%# リストの編集ボタン  %>
+  <div class="flex justify-center mt-[3em] mb-[1em]">
+    <%= link_to "編集", edit_list_path(@list), class: "w-[5em] h-[3em] px-1 py-2 rounded-md bg-gray-400/70 hover:bg-gray-400 flex justify-center items-center font-medium mx-2" %>
+    <%= button_to "削除", @list, method: :delete, data: { turbo: false}, class: "w-[5em] h-[3em] px-1 py-2 rounded-md text-white bg-red-600 hover:bg-red-500 flex justify-center items-center font-medium" %>
+  </div>
+</div>
