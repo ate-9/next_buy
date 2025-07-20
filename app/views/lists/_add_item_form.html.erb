@@ -1,6 +1,6 @@
-<%= form_with model: [@list, @item], class: "contents flex", local: true do |f| %>
+<%= form_with model: [@list, @new_item], class: "contents flex", local: true do |f| %>
   <div class="w-full flex justify-center items-center my-[1em]">
-    <% if @item.errors.any? %>
+    <% if @new_item.errors.any? %>
       <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
         <h2><%= pluralize(list.errors.count, "error") %> prohibited this list from being saved:</h2>
 

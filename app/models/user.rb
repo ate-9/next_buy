@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :buyer_lists,    class_name: "List", foreign_key: "buyer_id",  dependent: :nullify
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
-  validates_presence_of :name, uniqueness: { scope: true }
-  validates_presence_of :email_address, uniqueness: true
-  validates_presence_of :password_digest
+  validates :name, presence: true, uniqueness: true
+  validates :email_address, presence: true, uniqueness: true
+  validates :password_digest, presence: true
 end

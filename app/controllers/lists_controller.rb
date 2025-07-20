@@ -2,13 +2,14 @@ class ListsController < ApplicationController
   before_action :set_list, only: %i[ show edit update destroy ]
 
   def index
-    @lists = List.all
-    @items = Item.all
+    @lists = List.where(author_id: @current_user.id)
   end
 
   def show
-    @list = List.find(params[:id])
-    @item = Item.new(list: @list)
+    # NOTE: 自身で作成したリスト以外は閲覧不可
+    redirect_to lists_path unless @list.author == @current_user
+
+    @new_item = Item.new(list: @list)
   end
 
   def new

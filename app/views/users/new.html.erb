@@ -1,5 +1,10 @@
 <% turbo_page_requires_reload %>
 
+<% if flash[:alert] %>
+  <p class="w-full py-2 px-3 bg-red-50 mb-5 text-center text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
+<% end %>
+
+
 <div class="w-1/2 mx-auto flex flex-col justify-center items-start">
   <%= form_with model: @user, class: "w-full" do |f| %>
     <% if @user.errors.any? %>
@@ -38,14 +43,7 @@
       </div>
     </div>
 
-    <%# アイコンカラー %>
-    <div class="flex justify-left my-2">
-      <div class="w-full flex flex-col justify-start">
-        <%= f.label :icon_color, "アイコンカラー (※任意)", class: "text-xl" %>
-        <%= f.text_field :icon_color, placeholder: "#000000", class: "border border-blue-600 p-1" %>
-      </div>
-    </div>
-
     <%= f.submit "+ 作成", class: "mt-[1em] w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+    <%= link_to "戻る", new_session_path, class: "mt-[1em] w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-400/70 hover:bg-gray-400 text-white inline-block font-medium cursor-pointer" %>
   <% end %>
 </div>

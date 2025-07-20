@@ -8,11 +8,11 @@
       <%# メニューの中央部分 %>
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
         <%# ロゴ %>
-        <div class="flex shrink-0 items-center">
-          <%= link_to root_path do %>
-            <img class="h-8 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
+        <% unless controller.controller_name == "sessions" %>
+          <%= link_to root_path, class: "flex shrink-0 items-center" do %>
+            <%= image_tag "/logo.png", class: "h-[4em]" %>
           <% end %>
-        </div>
+        <% end %>
 
         <%# メニューの項目 %>
         <%#= render partial: "/common_menu/pc/pc_menu_options" %>

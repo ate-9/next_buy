@@ -1,17 +1,17 @@
 <div class="w-full mx-auto md:w-2/3 flex flex-col items-center justify-center">
   <div class="container w-9/10">
-    <% if alert = flash[:alert] %>
-      <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
+    <% if flash[:notice] %>
+      <p class="w-full py-2 px-3 bg-green-50 mb-5 text-center text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <% if notice = flash[:notice] %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% if flash[:alert] %>
+      <p class="w-full py-2 px-3 bg-red-50 mb-5 text-center text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
     <% end %>
 
     <%# アプリ名 %>
-    <h1 class="mt-[3em] mb-[1.5em] text-2xl font-medium text-center">
-       Next-Buy
-    </h1>
+    <div class="flex justify-center items-center">
+      <%= image_tag "/logo.png", class: "h-[15em]" %>
+    </div>
 
     <%# ログインフォーム  %>
     <%= form_with url: session_url, class: "contents" do |form| %>

@@ -11,9 +11,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to new_session_path, alert: "save 成功。"
+      redirect_to new_session_path, notice: "アカウント作成に成功しました🎉"
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, alert: "アカウント作成に失敗しました。もう一度作成お願いします。"
     end
   end
 
