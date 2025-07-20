@@ -1,36 +1,41 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <% if alert = flash[:alert] %>
-    <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
-  <% end %>
+<div class="w-full mx-auto md:w-2/3 flex flex-col items-center justify-center">
+  <div class="container w-9/10">
+    <% if alert = flash[:alert] %>
+      <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
+    <% end %>
 
-  <% if notice = flash[:notice] %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+    <% if notice = flash[:notice] %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
 
-  <h1 class="font-bold text-4xl">Sign in</h1>
+    <%# アプリ名 %>
+    <h1 class="mt-[3em] mb-[1.5em] text-2xl font-medium text-center">
+       Next-Buy
+    </h1>
 
-  <%# ログイン %>
-  <%= form_with url: session_url, class: "contents" do |form| %>
-    <div class="my-5">
-      <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
-    </div>
-
-    <div class="my-5">
-        <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
-    </div>
-
-    <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
-      <div class="inline">
-        <%= form.submit "Sign in", class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+    <%# ログインフォーム  %>
+    <%= form_with url: session_url, class: "contents" do |form| %>
+      <div class="my-5">
+        <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "メールアドレス", value: params[:email_address], class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
       </div>
-      <div class="ml-4em text-md text-gray-500">
-        <%= link_to "Forgot password?", new_password_path, class: "text-gray-700" %>
-      </div>
-    </div>
-  <% end %>
 
-  <%# アカウントの新規作成 %>
-  <div class="mt-[1em] w-full">
-    ...or <%= link_to "Create a New Account", new_user_path, class: "text-blue-600 underline hover:no-underline hover:text-blue-600/70" %> !
+      <div class="my-5">
+          <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "パスワード", maxlength: 72, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+      </div>
+
+      <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
+        <div class="inline">
+          <%= form.submit "ログイン", class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+        </div>
+        <div class="ml-4em text-md text-gray-500">
+          <%= link_to "パスワードを忘れた場合", new_password_path, class: "text-gray-700" %>
+        </div>
+      </div>
+    <% end %>
+
+    <%# アカウントの新規作成 %>
+    <div class="mt-[1em] w-full">
+      もしくは... <%= link_to "アカウントの作成", new_user_path, class: "text-blue-600 underline hover:no-underline hover:text-blue-600/70" %> !
+    </div>
   </div>
 </div>

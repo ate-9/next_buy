@@ -27,7 +27,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_08_074705) do
     t.string "list_name", null: false
     t.datetime "due_date"
     t.string "store"
-    t.string "point_card"
     t.text "memo"
     t.boolean "draft", default: false, null: false
     t.integer "author_id", null: false

@@ -3,7 +3,7 @@
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <%# モバイルのメニューボタン  %>
-      <%= render partial: "/common_menu/mobile/mobile_menu_button" %>
+      <%#= render partial: "/common_menu/mobile/mobile_menu_button" %>
 
       <%# メニューの中央部分 %>
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
@@ -15,19 +15,19 @@
         </div>
 
         <%# メニューの項目 %>
-        <%= render partial: "/common_menu/pc/pc_menu_options" %>
+        <%#= render partial: "/common_menu/pc/pc_menu_options" %>
       </div>
 
       <%# メニュー右側 %>
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
         <%# 通知ベル %>
-        <%= render partial: "common_menu/notification_button" %>
+        <%#= render partial: "common_menu/notification_button" %>
 
         <%# プロフィール %>
-        <%= render partial: "/common_menu/profile" %>
+        <%#= render partial: "/common_menu/profile" %>
 
         <%# ログイン、ログアウトボタン %>
-        <%= render partial: "/common_menu/pc/pc_login_button" %>
+        <%= render partial: "/common_menu/login_button" %>
       </div>
     </div>
   </div>

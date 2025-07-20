@@ -16,11 +16,11 @@
     <div class="flex justify-left my-2">
       <div class="flex flex-col justify-start">
         <%= f.label :list_name, "名前", class: "text-xl" %>
-        <%= f.text_field :list_name, class: "border border-blue-600 p-1" %>
+        <%= f.text_field :list_name, required: true, class: "border border-blue-600 p-1" %>
       </div>
     </div>
 
-    <%# 期限日 %>
+    <%# 期限 %>
     <div class="flex justify-left my-2">
       <div class="flex flex-col justify-start ">
         <%= f.label :due_date, "期限", class: "text-xl" %>
@@ -28,18 +28,10 @@
       </div>
     </div>
 
-    <%# 作成者 TODO: 消す %>
-<!--    <div class="flex justify-left my-2">-->
-<!--      <div class="flex flex-col justify-center">-->
-        <%#= f.label :author_id, "作成者", class: "text-xl" %>
-        <%#= f.collection_select :author_id, User.all, :id, :name, class: "border border-blue-600 p-1" %>
-<!--      </div>-->
-<!--    </div>-->
-
-    <%# 購入者 %>
+    <%# 担当者 %>
     <div class="flex justify-left my-2">
       <div class="flex flex-col justify-center">
-        <%= f.label :buyer_id, "購入者", class: "text-xl" %>
+        <%= f.label :buyer_id, "担当者", class: "text-xl" %>
         <%= f.collection_select :buyer_id, User.all, :id, :name, class: "border border-blue-600 p-1" %>
       </div>
     </div>
@@ -52,19 +44,11 @@
       </div>
     </div>
 
-    <%# ポイントカード %>
-    <div class="flex justify-left my-4">
-      <div class="flex flex-col justify-center">
-        <%= f.label :point_card, "ポイントカード", class: "text-xl" %>
-        <%= f.text_field :point_card, class: "border border-blue-600 p-1" %>
-      </div>
-    </div>
-
     <%# メモ %>
     <div class="flex justify-left my-4">
       <div class="flex flex-col justify-center">
         <%= f.label :memo, "メモ", class: "text-xl" %>
-        <%= f.text_area :memo, class: "border border-blue-600 p-1" %>
+        <%= f.text_area :memo, class: "border border-blue-600 h-[8em]" %>
       </div>
     </div>
 

@@ -7,10 +7,15 @@
 
   <%# リストについて %>
   <%# タイトル %>
-  <div class="container w-4/5 flex justify-center items-center mb-[2em]">
+  <div class="container w-4/5 flex flex-col justify-center items-center mb-[1em]">
     <h1 class="font-bold text-4xl">
       <%= @list.list_name %>
     </h1>
+    <% if @list.draft? %>
+      <p class="mt-[0.3em]">
+        [下書き]
+      </p>
+    <% end %>
   </div>
 
   <%# アイテム一覧 %>

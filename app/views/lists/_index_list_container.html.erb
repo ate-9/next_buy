@@ -1,6 +1,6 @@
 <%= link_to list_path(list) do %>
-  <div id="<%= dom_id list %>" class="w-full mb-[1em] rounded-xl p-7 pb-5 shadow-md bg-blue-400/60 shadow-blue-400/90 inset-shadow-xs inset-shadow-blue-100/90">
-    <div class="text-white text-center text-3xl truncate">
+  <div id="<%= dom_id list %>" class="w-full mb-[1em] rounded-xl p-7 pb-5 bg-blue-400/60 shadow-md shadow-blue-400/90 inset-shadow-xs inset-shadow-blue-100/90<%= " bg-gray-300/80 shadow-gray-400/90 inset-shadow-gray-100/90" if list.draft? %>">
+    <div class="text-center text-3xl truncate text-<%= list.draft? ? "black" : "white" %>">
       <%= list.list_name %>
     </div>
 
@@ -14,8 +14,8 @@
     </div>
 
     <div class="text-1xl">
-      <div class="text-right grid place-items-center w-full p-2 text-1xl rounded-lg bg-blue-600/80 hover:bg-blue-500 text-white font-medium">
-        詳細を見る
+      <div class="text-right grid place-items-center w-full p-2 text-1xl rounded-lg text-white font-medium <%= list.draft? ? "bg-blue-500/50 hover:bg-blue-400" : "bg-blue-600/80 hover:bg-blue-500" %>">
+        <%= list.draft? ? "下書き" : "詳細" %>を見る
       </div>
     </div>
   </div>
