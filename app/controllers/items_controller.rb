@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_list
+  before_action :set_item, only: %i[ edit update destroy ]
 
   def edit
-    @item = @list.items.find(params[:id])
   end
 
   def create
@@ -11,20 +11,20 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to list_path(@list), notice: 'アイテムを追加しました！🎉'
     else
-      render list_path(@list), notice: 'アイテム追加に失敗しました...'
+      render 'lists/show', status: :unprocessable_entity
     end
   end
+
   def update
-    if @item.update(list_params)
+    if @item.update(item_params)
       redirect_to list_path(@list), notice: 'アイテムを更新しました！🎉'
     else
-      flash.new[:alert] = '更新に失敗しました...'
-      render 'lists/show'
+      flash.now[:alert] = '更新に失敗しました...'
+      render 'lists/show', status: :unprocessable_entity
     end
   end
 
   def destroy
-    @item = Item.find(params[:id])
     @item.destroy
     redirect_back fallback_location: lists_path, notice: "アイテムを削除しました"
   end
@@ -35,9 +35,9 @@ class ItemsController < ApplicationController
     @list = List.find(params[:list_id])
   end
 
-  # def set_item
-  #   @item = @list.items.find(params[:id])
-  # end
+  def set_item
+    @item = @list.items.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:name, :price, :amount, :bought)
